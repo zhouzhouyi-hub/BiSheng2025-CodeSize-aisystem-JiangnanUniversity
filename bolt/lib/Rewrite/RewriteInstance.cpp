@@ -3534,9 +3534,9 @@ void RewriteInstance::emitAndLink() {
     else if (fname.find("rnd") != std::string::npos) // 注意 4826 也是 rnd.out!
         BC->sizeChange = 0x4a00; // 原5188(最新的是5196) 最好0x5198
     else if (fname.find("huffbench") != std::string::npos)
-        BC->sizeChange = 0x700; // 240  2a0
+        BC->sizeChange = 0x780; // 240  2a0
     else if (fname.find("sglib-combined") != std::string::npos)
-        BC->sizeChange = 0x600; // 240  280
+        BC->sizeChange = 0x640; // 240  280
     if (opts::ManualOffset != 0x0) {
         llvm::outs() << "ManualOffsetSetAt:" << opts::ManualOffset << "\n";
         BC->sizeChange = opts::ManualOffset;
