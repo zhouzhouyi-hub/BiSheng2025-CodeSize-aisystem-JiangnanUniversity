@@ -25,20 +25,20 @@ try:
     if hasattr(zopfli, 'ZopfliCompressor'):
         def compress_payload(data: bytes) -> bytes:
             comp = zopfli.ZopfliCompressor(
-                zopfli.ZOPFLI_FORMAT_ZLIB, numiterations=5000
+                zopfli.ZOPFLI_FORMAT_ZLIB, numiterations=90
             )
             return comp.compress(data) + comp.flush()
     elif hasattr(zopfli, 'compress'):
         def compress_payload(data: bytes) -> bytes:
             try:
-                return zopfli.compress(data, zopfli.ZOPFLI_FORMAT_ZLIB, 5000)
+                return zopfli.compress(data, zopfli.ZOPFLI_FORMAT_ZLIB, 90)
             except TypeError:
-                return zopfli.compress(data, 5000)
+                return zopfli.compress(data, 90)
     else:
         try:
             from zopfli.zlib import compress as _zlib_compress
             def compress_payload(data: bytes) -> bytes:
-                return _zlib_compress(data, 5000)
+                return _zlib_compress(data, 90)
         except ImportError:
             raise ImportError("no zopfli.compress and no zopfli.zlib")
 
