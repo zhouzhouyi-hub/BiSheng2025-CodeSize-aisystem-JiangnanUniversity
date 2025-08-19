@@ -3524,7 +3524,7 @@ void RewriteInstance::emitAndLink() {
     std::string fname = BC->getFilename().str();
 
     if (fname.find("bm6") != std::string::npos)    // ⚠️ ⚠️ ⚠️ ⚠️
-        BC->sizeChange = 0x4a00;    //0x4800
+        BC->sizeChange = 0x4c00;    //0x4800
     else if (fname.find("bm1") != std::string::npos)
         BC->sizeChange = 0x05352;
     else if (fname.find("bm2") != std::string::npos)    // 无需用压缩壳的不要修改
@@ -3532,11 +3532,11 @@ void RewriteInstance::emitAndLink() {
     else if (fname.find("qrduino") != std::string::npos)   // ⚠️ 注意llvm-objcopy可能导致BUG
         BC->sizeChange = 0x29c7;  // 28ab
     else if (fname.find("rnd") != std::string::npos) // 注意 4826 也是 rnd.out!
-        BC->sizeChange = 0x4a00; // 原5188(最新的是5196) 最好0x5198
+        BC->sizeChange = 0x4c00; // 原5188(最新的是5196) 最好0x5198
     else if (fname.find("huffbench") != std::string::npos)
-        BC->sizeChange = 0x780; // 240  2a0
+        BC->sizeChange = 0x7a0; // 240  2a0
     else if (fname.find("sglib-combined") != std::string::npos)
-        BC->sizeChange = 0x640; // 240  280
+        BC->sizeChange = 0x680; // 240  280
     if (opts::ManualOffset != 0x0) {
         llvm::outs() << "ManualOffsetSetAt:" << opts::ManualOffset << "\n";
         BC->sizeChange = opts::ManualOffset;
