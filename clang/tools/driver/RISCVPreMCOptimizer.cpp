@@ -450,6 +450,7 @@ void RISCVPreMCOptimizer::removeWeakSymbols(const std::string &fileName,
   // auto pos = base.rfind('.');
   // if (pos != std::string::npos) base.resize(pos);
 
+  return;
   if (fileName == "bm1") {
     gArr = sec_mys_i;
     gN = sizeof(sec_mys_i) / sizeof(sec_mys_i[0]);

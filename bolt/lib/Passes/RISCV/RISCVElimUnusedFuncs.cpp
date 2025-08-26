@@ -620,7 +620,7 @@ funcNames = {
           "__subtf3",
       };
   }
-
+#if 0 /* don't strip functions */
   for (StringRef Name : BF.getNames()) {
     for (const std::string &funcName : funcNames) {
       if (Name.contains(funcName)) {
@@ -632,6 +632,7 @@ funcNames = {
       }
     }
   }
+#endif  
 }
 
 void RISCVElimUnusedFuncs::runOnFunctions(BinaryContext &BC) {
